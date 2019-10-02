@@ -54,21 +54,47 @@ player1 = Player(room['outside'])
 
 while True:
     if player1.room is not None:
-        print(f'\n***********  {player1.room.name}  ***********')
-        print(f'{player1.room.desc} \n')
+        print(
+            f'\n***********  {player1.room.name}  *********** \n {player1.room.desc} \n')
         user_input = input(
-            'Please input the direction you would like to go: North(n), East(e), West(w), South(s) : ')
-        if user_input == 'n':
+            'Please input the direction you would like to go: North(n), East(e), West(w), South(s) : \n=>')
+        if user_input == 'q':
+            print('Game end')
+            break
+        elif user_input == 'n':
             if player1.room.n_to is not None:
                 player1.room = player1.room.n_to
+                continue
+            else:
+                print('You\'re not allowed to move this way.')
+                user_input = input('Choose another path \n>')
+                continue
         elif user_input == 'e':
             if player1.room.e_to is not None:
                 player1.room = player1.room.e_to
+                continue
+            else:
+                print('You\'re not allowed to move this way.')
+                user_input = input('Choose another path \n>')
+                continue
         elif user_input == 'w':
             if player1.room.w_to is not None:
                 player1.room = player1.room.w_to
+                continue
+            else:
+                print('You\'re not allowed to move this way.')
+                user_input = input('Choose another path \n>')
+                continue
         elif user_input == 's':
             if player1.room.s_to is not None:
                 player1.room = player1.room.s_to
+                continue
+            else:
+                print('You\'re not allowed to move this way.')
+                user_input = input('Choose another path \n>')
+                continue
         else:
-            print('Incorrect')
+            print('You entered the wrong cardinal letter')
+            user_input = input(
+                'Please choose from the following: North(n), East(e), West(w), South(s) \n>')
+            continue

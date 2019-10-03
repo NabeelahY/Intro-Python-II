@@ -25,7 +25,13 @@ class Room:
         room_details += '  ' + self.desc + '\n' + '\n'
         room_details += '  ' + '***********' + ' Room items ' + '***********+' + '\n'
         if len(self.list) == 0:
-            room_details = f'There are no items in {self.name}'
+            room_details += f'There are no items in {self.name}'
         for i in self.list:
             room_details += '\n' + '  ' + str(i) + '\n'
         return room_details
+
+    def add_item(self, item):
+        self.list.append(item)
+
+    def remove_item(self, item):
+        self.list.remove(item)
